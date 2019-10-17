@@ -26,6 +26,16 @@ class Instructor extends Person{
     grade(student, subject){
         return `${student.name} receives a perfect score on ${subject}!`;
     }
+
+    randomGrade(student){
+        let points = Math.round(Math.random() * 100);
+        if(student.grade === 100){
+            student.grade = student.grade - points;
+            return `${points} points haven been subtracted from ${student.name}'s grade.; Their grade is now ${student.grade}`;
+        }else{
+            return `No deductions! Their grade is still ${student.grade}`;
+        }
+    }
 }
 
 class Student extends Person{
@@ -33,7 +43,8 @@ class Student extends Person{
         super(stuAttrs);
         this.previousBackground = stuAttrs.previousBackground,
         this.className = stuAttrs.className,
-        this.favSubjects = stuAttrs.favSubjects
+        this.favSubjects = stuAttrs.favSubjects,
+        this.grade = stuAttrs.grade
     }
 
     listsSubjects(){
@@ -100,7 +111,8 @@ const edelgard = new Student({
     location: "Adrestian Empire",
     previousBackground: "Imperial princess who ruled a nation",
     className: "Black Eagles",
-    favSubjects: ["Sword", "Axe", "Armor", "Pegasus"]
+    favSubjects: ["Sword", "Axe", "Armor", "Pegasus"],
+    grade: 100
 })
 
 const dimitri = new Student({
@@ -109,7 +121,8 @@ const dimitri = new Student({
     location: "Holy Kingdom of Faerghus",
     previousBackground: "Crown Prince of a holy kingdom",
     className: "Blue Lions",
-    favSubjects: ["Sword", "Lance", "Pegasus"]
+    favSubjects: ["Sword", "Lance", "Pegasus"],
+    grade: 100
 })
 
 const claude = new Student({
@@ -118,7 +131,8 @@ const claude = new Student({
     location: "Almyra",
     previousBackground: "Heir of the House Riegan",
     className: "Golden Deer",
-    favSubjects: ["Sword", "Strategy", "Bow", "Pegasus", "Cavalry"]
+    favSubjects: ["Sword", "Strategy", "Bow", "Pegasus", "Cavalry"],
+    grade: 100
 })
 
 //PROJECT MANAGER OBJECTS
@@ -167,3 +181,7 @@ console.log(edelgard.PRAssignment('Plumbing101'));
 console.log(dimitri.sprintChallenge('Horse Riding for Beginners'));
 console.log(dracula.standup('random')); //I don't really understand what this is asking.
 console.log(dedede.debugsCode(claude, "archery"));
+
+//STRETCH
+
+console.log(link.randomGrade(edelgard));
